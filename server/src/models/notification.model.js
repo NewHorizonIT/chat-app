@@ -1,30 +1,30 @@
-"use strict";
+'use strict';
 
-import { model, Schema, Types } from "mongoose";
+import { model, Schema, Types } from 'mongoose';
 
-const DOCUMENT_NAME = "Notification";
-const COLLECTION_NAME = "notifications";
+const DOCUMENT_NAME = 'Notification';
+const COLLECTION_NAME = 'notifications';
 
 const notificationSchema = new Schema(
   {
     userId: {
       type: Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     type: {
       type: String,
-      enum: ["message", "friend_request", "system"],
+      enum: ['message', 'friend_request', 'system'],
       required: true,
     },
     message: {
       type: String,
       trim: true,
-      default: "",
+      default: '',
     },
     conversationId: {
       type: Types.ObjectId,
-      ref: "Conversation",
+      ref: 'Conversation',
     },
     isRead: {
       type: Boolean,

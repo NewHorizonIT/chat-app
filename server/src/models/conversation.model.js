@@ -1,21 +1,21 @@
-"use strict";
+'use strict';
 
-import { model, Schema, Types } from "mongoose";
+import { model, Schema, Types } from 'mongoose';
 
-const COLLECTION_NAME = "conversations";
-const DOCUMMENT_NAME = "Conversation";
+const COLLECTION_NAME = 'conversations';
+const DOCUMMENT_NAME = 'Conversation';
 
 const conversationSchema = new Schema(
   {
     type: {
       type: String,
       required: true,
-      enum: ["direct", "group"],
+      enum: ['direct', 'group'],
     },
     participants: [
       {
         type: Types.ObjectId,
-        ref: "User",
+        ref: 'User',
       },
     ],
     groupName: {
@@ -26,7 +26,7 @@ const conversationSchema = new Schema(
     },
     lastMessageSenderId: {
       type: Types.ObjectId,
-      ref: "User",
+      ref: 'User',
     },
     lastMessageSendAt: {
       type: Date,

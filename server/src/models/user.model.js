@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
-import { model, Schema } from "mongoose";
+import { model, Schema } from 'mongoose';
 
-const DOCUMENT_NAME = "User";
-const COLLECTION_NAME = "users";
+const DOCUMENT_NAME = 'User';
+const COLLECTION_NAME = 'users';
 
 const userSchema = new Schema(
   {
@@ -15,7 +15,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      match: [/^\S+@\S+\.\S+$/, "Invalid email format"],
+      match: [/^\S+@\S+\.\S+$/, 'Invalid email format'],
     },
     password: {
       type: String,
@@ -24,12 +24,12 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String,
-      default: "",
+      default: '',
     },
     status: {
       type: String,
-      enum: ["online", "offline"],
-      default: "online",
+      enum: ['online', 'offline'],
+      default: 'online',
     },
     lastSeen: {
       type: Date,

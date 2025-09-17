@@ -1,32 +1,32 @@
-"use strict";
+'use strict';
 
-import { model, Schema, Types } from "mongoose";
+import { model, Schema, Types } from 'mongoose';
 
-const DOCUMENT_NAME = "Friendship";
-const COLLECTION_NAME = "friendships";
+const DOCUMENT_NAME = 'Friendship';
+const COLLECTION_NAME = 'friendships';
 
 const friendshipSchema = new Schema(
   {
     userId: {
       type: Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     friendId: {
       type: Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
       validate: {
         validator: function (v) {
           return v.toString() !== this.userId.toString();
         },
-        message: "User cannot be friend with themselves",
+        message: 'User cannot be friend with themselves',
       },
     },
     status: {
       type: String,
-      enum: ["pending", "accepted", "blocked"],
-      default: "pending",
+      enum: ['pending', 'accepted', 'blocked'],
+      default: 'pending',
     },
   },
   {

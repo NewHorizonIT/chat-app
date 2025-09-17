@@ -1,21 +1,21 @@
-"use strict";
+'use strict';
 
-import { model, Schema, Types } from "mongoose";
+import { model, Schema, Types } from 'mongoose';
 
-const DOCUMENT_NAME = "Message";
-const COLLECTION_NAME = "messages";
+const DOCUMENT_NAME = 'Message';
+const COLLECTION_NAME = 'messages';
 
 const messageSchema = new Schema(
   {
     conversationId: {
       type: Types.ObjectId,
       required: true,
-      ref: "Conversation",
+      ref: 'Conversation',
     },
     senderId: {
       type: Types.ObjectId,
       required: true,
-      ref: "User",
+      ref: 'User',
     },
     content: {
       type: String,
@@ -27,8 +27,8 @@ const messageSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ["sent", "delivered", "seen"],
-      default: "sent",
+      enum: ['sent', 'delivered', 'seen'],
+      default: 'sent',
     },
   },
   {
