@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-import { connect } from "mongoose";
+import { connect } from 'mongoose';
 
 class Database {
   static instance = null;

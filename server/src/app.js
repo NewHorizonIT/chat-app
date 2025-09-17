@@ -1,7 +1,7 @@
-import express from "express";
-import dotenv from "dotenv";
-import morgan from "morgan";
-import router from "./router/index.js";
+import express from 'express';
+import dotenv from 'dotenv';
+import morgan from 'morgan';
+import router from './router/index.js';
 
 const app = express();
 
@@ -9,9 +9,9 @@ const app = express();
 dotenv.config();
 
 // Using middleware
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 
 // Declare routes
-app.use("/api/v1", router);
+app.use('/api/v1', router);
 
 export default app;
