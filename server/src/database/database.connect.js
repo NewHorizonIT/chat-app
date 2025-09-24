@@ -1,20 +1,30 @@
-'use strict';
-
-import { connect } from 'mongoose';
+import mongoose from 'mongoose';
+import config from '../config/index.js';
 
 class Database {
   static instance = null;
-  async connect() {
-    const db = await connect(process.env.MONGODB_URI, {});
-    return db;
+  connected = false;
+
+  static async getInstance() {
+    if (!Database.instance) {
+      const newdb = new Database();
+      Database.instance = await newdb.connect();
+    }
+    return Database.instance;
   }
 
-  static getInstance() {
-    if (!this.instance) {
-      const database = new Database();
-      this.instance = database.connect();
+  async connect() {
+    if (this.connected) {
+      return mongoose;
     }
-    return this.instance;
+
+    const uri = `mongodb://${config.db.user}:${config.db.password}@${config.db.host}:${config.db.port}/${config.db.name}?authSource=admin`;
+
+    await mongoose.connect(uri);
+
+    this.connected = true;
+    console.log('✅ MongoDB connected');
+    return mongoose;
   }
 }
 

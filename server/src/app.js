@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import router from './router/index.js';
+import Database from './database/database.connect.js';
 
 const app = express();
 
@@ -10,6 +11,9 @@ dotenv.config();
 
 // Using middleware
 app.use(morgan('dev'));
+
+// Connect Database
+Database.getInstance();
 
 // Declare routes
 app.use('/api/v1', router);
